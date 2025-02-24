@@ -10,10 +10,12 @@ select
    membership_start_date,
    last_active_date,
    company_name,
+   company_id,
    score,
    state,
-   source
+   source,
+   -- Member was born after becoming a member, which doesn't make any sense
+   -- the person is born and then becomes a member
+   'Faulty birthdate' as error
 from sports_league
-where
-  not (born_after_becoming_member or became_member_after_last_activity)
-  and company_name is not null
+where born_after_becoming_member 

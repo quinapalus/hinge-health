@@ -10,10 +10,12 @@ select
    membership_start_date,
    last_active_date,
    company_name,
+   company_id,
    score,
    state,
-   source
+   source,
+   -- there's no corresponding company id - company name between the company model
+   -- and the unity_golf_club and us_softball_league
+   'Missing Company Name' as error
 from sports_league
-where
-  not (born_after_becoming_member or became_member_after_last_activity)
-  and company_name is not null
+where company_name is null 

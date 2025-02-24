@@ -3,5 +3,7 @@ WITH src AS (
     FROM {{ source('raw', 'company') }}
 )
 
-SELECT *
+SELECT
+    company_id,
+    company_name
 FROM src

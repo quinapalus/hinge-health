@@ -24,9 +24,9 @@ WITH company AS (
        last_name,
        date_of_birth,
        company_id,
-       last_active,
+       last_active_date,
        score,
-       to_date(member_since::varchar, 'yyyy') as member_since,
+       membership_start_date,
        state,
        'unity_golf_club' as source
 from unity_golf_club
@@ -35,9 +35,9 @@ select first_name,
        last_name,
        date_of_birth,
        company_id,
-       last_active,
+       last_active_date,
        score,
-       to_date(joined_league::varchar, 'yyyy') as member_since,
+       membership_start_date,
        usa.abbreviation as us_state,
        'us_softball_league' as source
 from us_softball_league as usl
@@ -48,15 +48,15 @@ join us_states_abbreviations as usa
 select first_name,
        last_name,
        date_of_birth,
-       member_since,
-       last_active,
-       company.company_name,
+       membership_start_date,
+       last_active_date,
        combined.company_id,
+       company.company_name,
        score,
        state,
        source,
-       date_of_birth > member_since as born_after_becoming_member,
-       member_since > last_active as became_member_after_last_activity
+       date_of_birth > membership_start_date as born_after_becoming_member,
+       membership_start_date > last_active_date as became_member_after_last_activity
 from combined
 left join company
     on combined.company_id = company.company_id
