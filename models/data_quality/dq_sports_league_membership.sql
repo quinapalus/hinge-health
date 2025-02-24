@@ -18,4 +18,4 @@ select
    -- It should be the other way around
    'Faulty membership start date' as error
 from sports_league
-where became_member_after_last_activity 
+where became_member_after_last_activity

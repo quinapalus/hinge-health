@@ -18,4 +18,4 @@ select
    -- the person is born and then becomes a member
    'Faulty birthdate' as error
 from sports_league
-where born_after_becoming_member 
+where born_after_becoming_member

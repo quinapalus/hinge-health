@@ -18,4 +18,4 @@ select
    -- and the unity_golf_club and us_softball_league
    'Missing Company Name' as error
 from sports_league
-where company_name is null 
+where company_name is null

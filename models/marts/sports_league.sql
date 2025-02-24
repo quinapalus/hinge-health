@@ -4,6 +4,7 @@ WITH sports_league AS (
 )
 
 select
+   {{ dbt_utils.generate_surrogate_key(['first_name', 'last_name', 'date_of_birth', 'company_name']) }} AS primary_key,
    first_name,
    last_name,
    date_of_birth,
