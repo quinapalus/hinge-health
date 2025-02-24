@@ -28,3 +28,7 @@ models:
   hinge_health:
     staging:
       +schema: staging
+    intermediate:
+      +schema: intermediate
+    marts:
+      +schema: marts
