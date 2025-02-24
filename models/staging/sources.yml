@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: company
+      - name: unity_golf_club
+      - name: us_softball_league

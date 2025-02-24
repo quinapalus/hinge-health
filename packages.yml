@@ -1,0 +1,6 @@
+# add dependencies. these will get pulled during the `dbt deps` process.
+# see https://docs.getdbt.com/docs/package-management
+
+packages:
+  - package: dbt-labs/dbt_utils
+    version: 1.3.0
