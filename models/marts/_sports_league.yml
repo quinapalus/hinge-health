@@ -4,18 +4,12 @@ models:
   - name: sports_league
     description: Final cleaned sports league data excluding invalid records
     columns:
-      - name: primary_key
-        description: "Primary Key"
-        tests:
-          - unique:
-              tags: [ unique ]
-          - not_null
-      - name: first_name
+      - name: f_name
         description: "Member's first name"
         tests:
           - not_null
 
-      - name: last_name
+      - name: l_name
         description: "Member's last name"
         tests:
           - not_null
@@ -55,12 +49,20 @@ models:
           - not_null
           - accepted_values:
               values: ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO','CT','DC','DE', 'FL', 'GA',
-                      'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 
-                      'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 
-                      'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 
+                      'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+                      'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+                      'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
                       'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY']
 
       - name: source
         description: "Data source identifier"
         tests:
           - not_null
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - f_name
+            - l_name
+            - date_of_birth
+            - company_name

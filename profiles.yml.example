@@ -1,0 +1,13 @@
+your_project_name:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: <your-account>
+      user: <username>
+      password: <password>
+      role: <role>
+      database: <database>
+      warehouse: <warehouse>
+      schema: <schema>
+      threads: 4

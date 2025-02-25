@@ -19,6 +19,7 @@ flake8-docstrings = "*"
 isort = "*"
 pre-commit = "*"
 sqlfluff = "*"
+sqlfluff-templater-dbt = "*"
 
 [requires]
 python_version = "3.9"

@@ -1,21 +1,24 @@
-WITH sports_league AS (
-    SELECT *
-    FROM {{ ref('int_sports_league') }}
+with sports_league as (
+    select *
+    from {{ ref('int_sports_league') }}
+),
+
+final as (
+    select
+        f_name as f_name,
+        l_name as l_name,
+        date_of_birth as date_of_birth,
+        membership_start_date as membership_start_date,
+        last_active_date as last_active_date,
+        company_name as company_name,
+        company_id as company_id,
+        score as score,
+        state as state,
+        source as source,
+        'Missing Company Name' as error
+    from sports_league
+    where company_name is null
 )
 
-select
-   first_name,
-   last_name,
-   date_of_birth,
-   membership_start_date,
-   last_active_date,
-   company_name,
-   company_id,
-   score,
-   state,
-   source,
-   -- there's no corresponding company id - company name between the company model
-   -- and the unity_golf_club and us_softball_league
-   'Missing Company Name' as error
-from sports_league
-where company_name is null
+select *
+from final
